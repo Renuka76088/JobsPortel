@@ -5,175 +5,148 @@ import {
   Instagram,
   Twitter,
   Facebook,
-  ArrowUpRight,
+  ArrowRight,
   Mail,
   Phone,
-  MapPin
+  MapPin,
+  Bot,
+  ChevronRight,
+  Briefcase,
+  Users
 } from "lucide-react";
 
 const Footer = () => {
   const container = {
-    hidden: { opacity: 0, y: 60 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, staggerChildren: 0.2 }
+      transition: { staggerChildren: 0.1 }
     }
   };
 
   const item = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 }
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
 
   return (
-    <footer className="bg-sky-50 pt-24 pb-14">
+    <footer className="bg-[#f8fafc] pt-24 pb-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        
+        {/* --- TOP CTA CARD --- */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white p-12 lg:p-16 mb-24 rounded-[40px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)] flex flex-col lg:flex-row items-center justify-between gap-12"
+        >
+          <div className="text-center lg:text-left flex-1">
+            <h2 className="text-5xl lg:text-7xl font-extrabold text-slate-900 leading-tight tracking-tighter mb-6">
+              Hire better, <br />
+              <span className="text-sky-600">Hired faster.</span>
+            </h2>
+            <p className="text-slate-500 font-medium text-2xl max-w-xl">
+              LabelzAI Techservices LLP: Next-gen talent matching.
+            </p>
+          </div>
 
-      <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col sm:flex-row gap-6 shrink-0">
+            <button className="bg-sky-600 text-white px-14 py-6 rounded-2xl font-bold text-xl hover:bg-sky-700 transition-all shadow-xl shadow-sky-100 flex items-center gap-3">
+              <Briefcase size={24} /> Post a Job
+            </button>
+            <button className="bg-white text-slate-900 border-2 border-slate-100 px-14 py-6 rounded-2xl font-bold text-xl hover:bg-slate-50 transition-all flex items-center gap-3">
+              <Users size={24} /> Find Talent
+            </button>
+          </div>
+        </motion.div>
 
-        {/* CTA CARD */}
-
+        {/* --- MAIN GRID (Perfectly Aligned Rows) --- */}
         <motion.div
           variants={container}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="bg-white rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.08)] p-14 mb-20 flex flex-col lg:flex-row items-center justify-between gap-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20"
         >
-
-          <motion.div variants={item}>
-            <h2 className="text-5xl font-bold leading-tight mb-4">
-              Ready to grow your <br />
-              <span className="text-sky-600">career or business?</span>
-            </h2>
-
-            <p className="text-gray-500 text-lg max-w-md">
-              Join thousands of professionals and companies building the
-              future with Digital India Biz.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={item}
-            className="flex gap-5 flex-wrap"
-          >
-            <button className="bg-sky-600 hover:bg-sky-700 text-white px-10 py-4 rounded-xl text-lg font-semibold shadow-lg hover:scale-105 transition">
-              Post a Job
-            </button>
-
-            <button className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-10 py-4 rounded-xl text-lg font-semibold transition">
-              Find Jobs <ArrowUpRight size={20}/>
-            </button>
-          </motion.div>
-
-        </motion.div>
-
-
-        {/* FOOTER CONTENT */}
-
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          className="grid grid-cols-1 md:grid-cols-4 gap-14 bg-white rounded-3xl shadow-[0_15px_50px_rgba(0,0,0,0.07)] p-12"
-        >
-
-          {/* BRAND */}
-
-          <motion.div variants={item}>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-sky-600 rounded-xl"></div>
-              <span className="text-2xl font-bold">
-                Digital India
+          {/* Column 1: Brand */}
+          <motion.div variants={item} className="flex flex-col">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-16 h-16 bg-sky-600 rounded-2xl flex items-center justify-center text-white shadow-lg">
+                <Bot size={36} />
+              </div>
+              <span className="text-4xl font-black text-slate-900 tracking-tighter">
+                LabelzAI<span className="text-sky-600">.</span>
               </span>
             </div>
-
-            <p className="text-gray-500 text-base leading-relaxed mb-6">
-              A modern tech and hiring platform helping companies
-              connect with top digital talent across India.
+            <p className="text-slate-500 font-bold text-xl leading-relaxed">
+              India's premium intelligence-led career ecosystem for tech elite.
             </p>
-
-            <div className="flex gap-4 text-gray-500">
-              <Facebook className="cursor-pointer hover:text-sky-600 transition"/>
-              <Instagram className="cursor-pointer hover:text-sky-600 transition"/>
-              <Twitter className="cursor-pointer hover:text-sky-600 transition"/>
-              <Linkedin className="cursor-pointer hover:text-sky-600 transition"/>
+            <div className="flex gap-5 mt-10">
+              {[Linkedin, Twitter, Instagram, Facebook].map((Icon, i) => (
+                <Icon key={i} size={28} className="text-slate-400 hover:text-sky-600 cursor-pointer transition-all hover:-translate-y-1" />
+              ))}
             </div>
           </motion.div>
 
-
-          {/* LINKS */}
-
+          {/* Column 2: Jobseekers */}
           <motion.div variants={item}>
-            <h4 className="text-xl font-semibold mb-6">
-              Job Categories
-            </h4>
-
-            <ul className="space-y-4 text-gray-500 text-base">
-              <li className="hover:text-sky-600 cursor-pointer">Engineering</li>
-              <li className="hover:text-sky-600 cursor-pointer">Marketing</li>
-              <li className="hover:text-sky-600 cursor-pointer">UI/UX Design</li>
-              <li className="hover:text-sky-600 cursor-pointer">Sales</li>
+            <h4 className="text-2xl font-black text-slate-900 mb-10 tracking-tight">For Jobseekers</h4>
+            <ul className="space-y-6">
+              {["Explore Jobs", "AI Resume Builder", "Salary Insights", "Skill Assessment"].map((link) => (
+                <li key={link} className="text-xl text-slate-500 font-bold hover:text-sky-600 cursor-pointer flex items-center group transition-all">
+                  <ChevronRight size={20} className="mr-0 opacity-0 group-hover:mr-2 group-hover:opacity-100 transition-all" />
+                  {link}
+                </li>
+              ))}
             </ul>
           </motion.div>
 
-
-          {/* COMPANY */}
-
+          {/* Column 3: Employers */}
           <motion.div variants={item}>
-            <h4 className="text-xl font-semibold mb-6">
-              Company
-            </h4>
-
-            <ul className="space-y-4 text-gray-500 text-base">
-              <li className="hover:text-sky-600 cursor-pointer">About Us</li>
-              <li className="hover:text-sky-600 cursor-pointer">Careers</li>
-              <li className="hover:text-sky-600 cursor-pointer">Blog</li>
-              <li className="hover:text-sky-600 cursor-pointer">Contact</li>
+            <h4 className="text-2xl font-black text-slate-900 mb-10 tracking-tight">For Employers</h4>
+            <ul className="space-y-6">
+              {["Post Vacancy", "Talent Sourcing", "Screening Tools", "Enterprise Suite"].map((link) => (
+                <li key={link} className="text-xl text-slate-500 font-bold hover:text-sky-600 cursor-pointer flex items-center group transition-all">
+                  <ChevronRight size={20} className="mr-0 opacity-0 group-hover:mr-2 group-hover:opacity-100 transition-all" />
+                  {link}
+                </li>
+              ))}
             </ul>
           </motion.div>
 
-
-          {/* CONTACT */}
-
-          <motion.div variants={item}>
-            <h4 className="text-xl font-semibold mb-6">
-              Contact
-            </h4>
-
-            <div className="space-y-5 text-gray-500">
-
-              <div className="flex items-start gap-3">
-                <MapPin className="text-sky-600"/>
-                <p>118 Regus AB Road<br/>Indore, MP 452001</p>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Phone className="text-sky-600"/>
-                <p>+91 9302057620</p>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Mail className="text-sky-600"/>
-                <p className="text-sky-600 font-semibold">
-                  hello@digitalindia.biz
-                </p>
-              </div>
-
+          {/* Column 4: Contact */}
+          <motion.div variants={item} className="space-y-10">
+            <h4 className="text-2xl font-black text-slate-900 mb-10 tracking-tight">LabelzAI HQ</h4>
+            <div className="flex items-start gap-4">
+              <MapPin className="text-sky-600 shrink-0 mt-1" size={28} />
+              <p className="text-xl text-slate-500 font-bold leading-snug">
+             AB Road, Indore, MP 452001
+              </p>
+            </div>
+            <div className="flex items-center gap-4">
+              <Phone className="text-sky-600 shrink-0" size={28} />
+              <p className="text-2xl font-black text-slate-900">+91 000 0000</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <Mail className="text-sky-600 shrink-0" size={28} />
+              <p className="text-2xl font-black text-sky-600 hover:underline cursor-pointer">
+                info@labelzai.com
+              </p>
             </div>
           </motion.div>
-
         </motion.div>
 
-
-        {/* BOTTOM */}
-
-        <div className="mt-10 text-center text-gray-400 text-sm">
-          © 2026 Digital India Biz — Crafted with ❤️ Excellence
+        {/* --- BOTTOM BAR (Clean & Big) --- */}
+        <div className="pt-12 border-t border-slate-200 flex flex-col lg:flex-row justify-between items-center gap-8">
+          <p className="text-xl font-bold text-slate-400">
+            © 2026 LabelzAI Techservices LLP. All rights reserved.
+          </p>
+          <div className="flex gap-12 text-xl font-black text-slate-500">
+            <span className="hover:text-sky-600 cursor-pointer transition-all">Privacy</span>
+            <span className="hover:text-sky-600 cursor-pointer transition-all">Terms</span>
+          </div>
         </div>
-
       </div>
-
     </footer>
   );
 };

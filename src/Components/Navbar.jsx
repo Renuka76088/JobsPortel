@@ -20,7 +20,7 @@ const Navbar = () => {
                 <Briefcase size={20} />
               </div>
               <span className="text-2xl font-black tracking-tighter text-black uppercase">
-            Jobs<span className="text-sky-500">Portel</span>
+            Labelz<span className="text-sky-500">AI</span>
               </span>
             </div>
 
