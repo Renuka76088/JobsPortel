@@ -6,6 +6,10 @@ import './App.css'
 import LandingPage from './Components/LandingPage'
 import Footer from './Components/Footer'
 import Navbar from './Components/Navbar'
+import AboutPage from './Pages/AboutPage'
+import ServicesPage from './Pages/ServicesPage'
+import IndustriesPage from './Components/IndustriesPage'
+import BlogPage from './Pages/BlogPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +21,10 @@ function App() {
     <Navbar/>
     <Routes>
       <Route path='/' element={<LandingPage/>}/>
+      <Route path='/about' element={<AboutPage/>}/>
+      <Route path='/services' element={<ServicesPage/>}/>
+      <Route path='/industries' element={<IndustriesPage/>}/>
+      <Route path='/insights/blogs' element={< BlogPage/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>

@@ -34,32 +34,35 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         
         {/* --- TOP CTA CARD --- */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-white p-12 lg:p-16 mb-24 rounded-[40px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)] flex flex-col lg:flex-row items-center justify-between gap-12"
-        >
-          <div className="text-center lg:text-left flex-1">
-            <h2 className="text-5xl lg:text-7xl font-extrabold text-slate-900 leading-tight tracking-tighter mb-6">
-              Hire better, <br />
-              <span className="text-sky-600">Hired faster.</span>
-            </h2>
-            <p className="text-slate-500 font-medium text-2xl max-w-xl">
-              LabelzAI Techservices LLP: Next-gen talent matching.
-            </p>
-          </div>
+      <motion.div
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  /* Mobile par padding aur margin kam rakha hai taaki content tight dikhe */
+  className="bg-white p-8 md:p-12 lg:p-16 mb-12 md:mb-24 rounded-[30px] md:rounded-[40px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)] flex flex-col lg:flex-row items-center justify-between gap-10"
+>
+  <div className="text-center lg:text-left flex-1 w-full">
+    {/* Mobile par text 3xl rakha hai (kaafi bada h par screen se bahar nahi jayega) */}
+    <h2 className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-slate-900 leading-[1.2] lg:leading-tight tracking-tighter mb-4 md:mb-6">
+      Hire better, <br />
+      <span className="text-sky-600">Hired faster.</span>
+    </h2>
+    {/* Font size ko mobile ke liye adjust kiya hai */}
+    <p className="text-slate-500 font-medium text-lg md:text-xl lg:text-2xl max-w-xl mx-auto lg:mx-0">
+      LabelzAI Techservices LLP: Next-gen talent matching.
+    </p>
+  </div>
 
-          <div className="flex flex-col sm:flex-row gap-6 shrink-0">
-            <button className="bg-sky-600 text-white px-14 py-6 rounded-2xl font-bold text-xl hover:bg-sky-700 transition-all shadow-xl shadow-sky-100 flex items-center gap-3">
-              <Briefcase size={24} /> Post a Job
-            </button>
-            <button className="bg-white text-slate-900 border-2 border-slate-100 px-14 py-6 rounded-2xl font-bold text-xl hover:bg-slate-50 transition-all flex items-center gap-3">
-              <Users size={24} /> Find Talent
-            </button>
-          </div>
-        </motion.div>
-
+  {/* Mobile par buttons ek ke niche ek (flex-col) aur full width (w-full) honge */}
+  <div className="flex flex-col sm:flex-row gap-4 md:gap-6 w-full lg:w-auto shrink-0">
+    <button className="bg-sky-600 text-white px-8 md:px-14 py-4 md:py-6 rounded-xl md:rounded-2xl font-bold text-lg md:text-xl hover:bg-sky-700 transition-all shadow-lg shadow-sky-100 flex items-center justify-center gap-3 w-full sm:w-auto">
+      <Briefcase size={22} className="md:w-6 md:h-6" /> Post a Job
+    </button>
+    <button className="bg-white text-slate-900 border-2 border-slate-100 px-8 md:px-14 py-4 md:py-6 rounded-xl md:rounded-2xl font-bold text-lg md:text-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-3 w-full sm:w-auto">
+      <Users size={22} className="md:w-6 md:h-6" /> Find Talent
+    </button>
+  </div>
+</motion.div>
         {/* --- MAIN GRID (Perfectly Aligned Rows) --- */}
         <motion.div
           variants={container}
