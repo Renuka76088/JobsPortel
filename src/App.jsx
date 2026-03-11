@@ -10,6 +10,9 @@ import AboutPage from './Pages/AboutPage'
 import ServicesPage from './Pages/ServicesPage'
 import IndustriesPage from './Components/IndustriesPage'
 import BlogPage from './Pages/BlogPage'
+import CaseStudiesPage from './Pages/CaseStudiesPage'
+import CareerPage from './Pages/CareerPage'
+import ContactPage from './Pages/ContactPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -25,6 +28,9 @@ function App() {
       <Route path='/services' element={<ServicesPage/>}/>
       <Route path='/industries' element={<IndustriesPage/>}/>
       <Route path='/insights/blogs' element={< BlogPage/>}/>
+      <Route path='/insights/case-studies' element={< CaseStudiesPage/>}/>
+      <Route path='/careers' element={< CareerPage/>}/>
+      <Route path='/contact' element={< ContactPage/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>
