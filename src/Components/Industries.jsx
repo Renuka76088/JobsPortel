@@ -13,49 +13,48 @@ const Industries = () => {
       title: "Technology & IT",
       desc: "Architecting the future with elite talent in AI, Cloud, and Software Engineering for global tech giants.",
       icon: <Cpu size={28} />,
-      accent: "bg-sky-500",
     },
     {
       id: "02",
       title: "Real Estate",
       desc: "Connecting visionary developers with experts in project management, sales, and urban planning.",
       icon: <Building2 size={28} />,
-      accent: "bg-black",
     },
     {
       id: "03",
       title: "Healthcare",
       desc: "Empowering medical institutions with verified professionals in specialized care and hospital management.",
       icon: <Stethoscope size={28} />,
-      accent: "bg-sky-600",
     },
     {
       id: "04",
       title: "FinTech",
       desc: "Bridging the gap in the financial sector with experts in risk management, trading, and digital banking.",
       icon: <BarChart4 size={28} />,
-      accent: "bg-black",
     },
     {
       id: "05",
       title: "Education",
       desc: "Transforming the learning landscape by connecting institutions with innovative educators and trainers.",
       icon: <GraduationCap size={28} />,
-      accent: "bg-sky-400",
     }
   ];
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden border-t-2 border-black">
+    <section className="py-16 md:py-24 bg-white relative overflow-hidden border-t-2 border-black">
       
-      {/* Background Grid Pattern (Subtle) */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-           style={{ backgroundImage: `radial-gradient(#000 1px, transparent 1px)`, backgroundSize: '30px 30px' }}></div>
+      {/* Background Grid Pattern (New Sharp Grid) */}
+      <div className="absolute inset-0 z-0 opacity-[0.04] pointer-events-none" 
+           style={{ 
+             backgroundImage: `linear-gradient(#000 1.5px, transparent 1.5px), linear-gradient(90deg, #000 1.5px, transparent 1.5px)`, 
+             backgroundSize: '40px 40px' 
+           }}>
+      </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
           <div className="max-w-2xl">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
@@ -68,7 +67,7 @@ const Industries = () => {
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="text-5xl lg:text-7xl font-black text-black tracking-tighter leading-[0.9]"
+              className="text-4xl md:text-5xl lg:text-7xl font-black text-black tracking-tighter leading-[0.9]"
             >
               GLOBAL SECTORS. <br />
               <span className="text-sky-500 italic font-black">UNLIMITED REACH.</span>
@@ -77,35 +76,40 @@ const Industries = () => {
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-slate-500 font-bold uppercase text-[11px] tracking-[0.3em] border-b-2 border-black pb-2"
+            className="hidden md:block text-slate-500 font-bold uppercase text-[11px] tracking-[0.3em] border-b-2 border-black pb-2"
           >
             Protocol-driven recruitment
           </motion.p>
         </div>
 
-        {/* --- Neubrutalist Interactive Accordion --- */}
+        {/* --- Interactive Accordion --- */}
         <div className="flex flex-col lg:flex-row h-auto lg:h-[550px] gap-4">
           {industries.map((item, index) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              // Mobile Logic: Scroll par activate hoga
+              onViewportEnter={() => {
+                if (window.innerWidth < 1024) setHoveredIndex(index);
+              }}
+              viewport={{ amount: 0.6 }} // Jab card 60% dikhne lage tab trigger ho
+              
+              // Desktop Logic: Hover par activate hoga
               onMouseEnter={() => setHoveredIndex(index)}
-              className={`relative cursor-pointer transition-all duration-700 ease-[0.23, 1, 0.32, 1] border-[3px] border-black
+              
+              className={`relative transition-all duration-700 ease-[0.23, 1, 0.32, 1] border-[3px] border-black overflow-hidden
                 ${hoveredIndex === index 
-                  ? 'lg:flex-[4] bg-white shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]' 
-                  : 'lg:flex-1 bg-slate-50 opacity-60 grayscale hover:opacity-100'
+                  ? 'lg:flex-[4] bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] md:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]' 
+                  : 'lg:flex-1 bg-slate-50 lg:opacity-60 lg:grayscale'
                 }
-                min-h-[400px] lg:min-h-full p-8 lg:p-10 flex flex-col justify-between`}
+                min-h-[140px] lg:min-h-full p-6 lg:p-10 flex flex-col justify-between`}
             >
               
               {/* Card Top: ID & Icon */}
-              <div className="flex items-center justify-between">
-                <span className={`text-2xl font-black tracking-tighter transition-colors duration-500 ${hoveredIndex === index ? 'text-sky-500' : 'text-black/20'}`}>
+              <div className="flex items-center justify-between lg:mb-0 mb-4">
+                <span className={`text-xl lg:text-2xl font-black transition-colors ${hoveredIndex === index ? 'text-sky-500' : 'text-black/20'}`}>
                   {item.id}
                 </span>
-                <div className={`w-14 h-14 border-2 border-black flex items-center justify-center transition-all duration-500 
+                <div className={`w-12 h-12 lg:w-14 lg:h-14 border-2 border-black flex items-center justify-center transition-all duration-500 
                   ${hoveredIndex === index ? 'bg-black text-white scale-110 shadow-[4px_4px_0px_0px_rgba(14,165,233,1)]' : 'bg-white text-black'}
                 `}>
                   {item.icon}
@@ -116,42 +120,38 @@ const Industries = () => {
               <div className="relative">
                 <h3 className={`font-black uppercase tracking-tighter transition-all duration-500 
                   ${hoveredIndex === index 
-                    ? 'text-4xl text-black mb-6' 
-                    : 'text-2xl text-black lg:rotate-[-90deg] lg:absolute lg:bottom-16 lg:left-[-80px] lg:w-[350px] lg:text-center'}
+                    ? 'text-2xl md:text-4xl text-black mb-4' 
+                    : 'text-xl text-black lg:rotate-[-90deg] lg:absolute lg:bottom-16 lg:left-[-80px] lg:w-[350px] lg:text-center'}
                 `}>
                   {item.title}
                 </h3>
 
-                <AnimatePresence>
+                <AnimatePresence mode="wait">
                   {hoveredIndex === index && (
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.4 }}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="overflow-hidden"
                     >
-                      <p className="text-slate-600 font-bold leading-snug max-w-sm mb-10 text-lg">
+                      <p className="text-slate-600 font-bold leading-tight max-w-sm mb-6 text-sm md:text-lg">
                         {item.desc}
                       </p>
-                      <button className="flex items-center gap-4 bg-black text-white px-8 py-4 font-black text-[10px] uppercase tracking-[0.2em] hover:bg-sky-500 transition-all">
-                        Explore Openings 
-                        <Plus size={14} className="text-sky-400" />
+                      <button className="flex items-center gap-3 bg-black text-white px-6 py-3 font-black text-[10px] uppercase tracking-[0.2em] hover:bg-sky-500 transition-all shadow-[4px_4px_0px_0px_rgba(14,165,233,1)]">
+                        Explore <Plus size={14} />
                       </button>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
 
-              {/* Decorative Accent on active card */}
+              {/* Top Accent */}
               {hoveredIndex === index && (
                 <div className="absolute top-0 left-0 w-full h-[6px] bg-sky-500"></div>
               )}
             </motion.div>
           ))}
         </div>
-
-      
-
       </div>
     </section>
   );
