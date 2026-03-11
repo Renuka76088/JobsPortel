@@ -13,6 +13,7 @@ import BlogPage from './Pages/BlogPage'
 import CaseStudiesPage from './Pages/CaseStudiesPage'
 import CareerPage from './Pages/CareerPage'
 import ContactPage from './Pages/ContactPage'
+import JobDetailsPage from './Pages/JobDetailsPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -31,6 +32,7 @@ function App() {
       <Route path='/insights/case-studies' element={< CaseStudiesPage/>}/>
       <Route path='/careers' element={< CareerPage/>}/>
       <Route path='/contact' element={< ContactPage/>}/>
+      <Route path="/job-details/:id" element={<JobDetailsPage />} />
     </Routes>
     <Footer/>
     </BrowserRouter>
