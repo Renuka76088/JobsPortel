@@ -160,7 +160,7 @@ const Careers = () => {
                   </div>
 
                   <div className="flex items-center gap-4 w-full md:w-auto border-t md:border-0 pt-6 md:pt-0">
-                 // Is line ko Job Card ke andar update karein:
+                
 <Link to={`/job-details/${job._id}`} className="flex-1 md:flex-none">
   <button className="w-full border border-slate-200 text-slate-600 px-8 py-3.5 rounded-2xl font-semibold hover:bg-slate-50 transition-all">
     Details
